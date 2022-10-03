@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vite + Vue + TS</title>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+  <script type="text/javascript">
+    (function () {
+
+      var scrollTop = 0;
+
+      // 显示弹出层
+      open.onclick = function () {
+
+        // 在弹出层显示之前，记录当前的滚动位置
+        scrollTop = getScrollTop();
+
+        // 使body脱离文档流
+        document.body.classList.add('dialog-open');
+
+        // 把脱离文档流的body拉上去！否则页面会回到顶部！
+        document.body.style.top = -scrollTop + 'px';
+
+        mask.style.display = 'block';
+      }
+
+      // 隐藏弹出层
+      close.onclick = function () {
+
+        mask.style.display = 'none';
+
+        // body又回到了文档流中（我胡汉三又回来啦！）
+        document.body.classList.remove('dialog-open');
+
+        // 滚回到老地方
+        to(scrollTop);
+      }
+
+      function to(scrollTop) {
+        document.body.scrollTop = document.documentElement.scrollTop = scrollTop;
+      }
+      function getScrollTop() {
+        return document.body.scrollTop || document.documentElement.scrollTop;
+      }
+
+    }());
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<template>
+   <Navheader  >
+      <template #left>
+        <div class="left">
+          <van-icon  name="arrow-left" />
+        </div>
+      </template>
+      <template #center>
+        <div>
+          商品搜索
+        </div>
+      </template>
+    </Navheader>
+    <van-search v-model="key" @search="search" @blur="search" placeholder="请输入搜索关键词" />
+</template>
+
+<script setup lang="ts">
+  import {getSearchShop} from "@/api/request"
+  import {IIndexData} from "@/types/shop"
+import { Toast } from "vant";
+const key = ref("")
+const searchShopData = ref<IIndexData[]>([])
+const search =async ()=>{
+  console.log("开始搜索")
+  if(!key.value) return Toast.fail("请先输入搜索关键字") 
+  const {data:res} = await getSearchShop(key.value)
+  console.log(res)
+  if(res.code!=200){
+    searchShopData.value = []
+    return 
+  } 
+  searchShopData.value = res.data
+  
+}
+</script>
+
+<style lang='less' scoped> 
+
+</style>
