@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "md-editor-v3": "^2.3.0",
     "mitt": "^3.0.0",
     "pinia": "^2.0.21",
     "unplugin-auto-import": "^0.11.2",
