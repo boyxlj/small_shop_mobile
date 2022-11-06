@@ -355,20 +355,20 @@ const addCar = async () => {
       margin: 0.4688rem 0;
       min-height: 3.125rem;
       .tag {
-        // background: var(--themeColor);
-        background: linear-gradient(
-          to right bottom,
-          rgb(158, 41, 41),
-          rgb(214, 60, 60),
-          rgb(120, 24, 24)
-        );
-        border-radius: 0.1875rem;
-        padding: 0 0.1875rem;
-        color: #fff;
-        font-size: 0.75rem;
-        // border-radius: .25rem;
-        margin-right: 0.25rem;
-      }
+          // background: var(--themeColor);
+          background: linear-gradient(
+            to right bottom,
+            rgb(158, 41, 41),
+            rgb(214, 60, 60),
+            rgb(120, 24, 24)
+          );
+          border-radius: 0.1875rem;
+          padding: 0 0.1875rem;
+          color: #fff;
+          font-size: 0.75rem;
+          // border-radius: .25rem;
+          margin-right: 0.25rem;
+        }
     }
     .bottom {
       margin: 1.875rem;

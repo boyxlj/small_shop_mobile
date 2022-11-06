@@ -22,10 +22,7 @@
     <div class="info">
       <div class="desc1">
         <div class="ziying">微商城自营</div>
-        <div class="title">
-          <span v-if="item.tag" class="tag">{{ item.tag }}</span
-          >{{ item.title }}/{{ item.descs }}
-        </div>
+        <div class="title">{{ item.title }}/{{ item.descs }}</div>
         <div class="select">
           <div><van-icon class="icons" name="back-top" />推荐</div>
           <div><van-icon class="icons" name="medal-o" />积分购</div>
@@ -36,10 +33,7 @@
         </div>
       </div>
       <div class="tip">--商品详情--</div>
-      <div class="detailDesc">
-        <span v-if="item.tag" class="tag">{{ item.tag }}</span
-        >{{ item.detailDesc }}
-      </div>
+      <div class="detailDesc"><span v-if="item.tag" class="tag">{{item.tag}}</span>{{ item.detailDesc }}</div>
       <div class="bottom"></div>
       <div class="tip">--推荐商品--</div>
       <ShopItem :indexShopData="randomShopData" :noTitle="true"></ShopItem>
@@ -76,7 +70,7 @@ import {
   getIsCollect,
   getAddRemoveCollect,
   getAddCollect,
-  getIsAddCar,
+  getIsAddCar
 } from "@/api/request";
 import { IShopDetails } from "@/types/shop";
 import { useGetRandomShop } from "@/hooks/shop";
@@ -141,50 +135,54 @@ const addCollect = async () => {
     localStorage.getItem("userId") as any,
     route.query.detailId as any
   );
-  if (res.code != 200) return Toast.fail("添加收藏失败");
-  Toast("已添加至我的收藏");
-  collect.value = true;
+  if(res.code!=200) return Toast.fail("添加收藏失败")
+  Toast("已添加至我的收藏")
+  collect.value = true
+
 };
 
 //移除收藏
-const removeCollect = async () => {
+const removeCollect = async () => {  
   const { data: res } = await getAddRemoveCollect(
     localStorage.getItem("userId") as any,
     route.query.detailId as any
   );
-  if (res.code != 200) return Toast.fail("移除收藏失败");
-  Toast("已从我的收藏中移除");
-  collect.value = false;
+  if(res.code!=200) return Toast.fail("移除收藏失败")
+  Toast("已从我的收藏中移除")
+  collect.value = false
 };
 
 //点击拼团活动
 const pintuan = () => {
   useIsLogin();
-  if (localStorage.getItem("userInfo")) {
+  if(localStorage.getItem("userInfo")){
     Toast("拼团活动敬请期待!");
-  }
+  } 
+  
 };
 
 //点击联系客服
 const contact = () => {
   useIsLogin();
-  if (localStorage.getItem("userInfo")) {
+  if(localStorage.getItem("userInfo")){
     Toast("客服正在上线的路上!");
-  }
+  } 
+  
 };
 
 //跳转购物车页面
 const navigateCar = () => {
   useIsLogin();
-  if (localStorage.getItem("userInfo")) {
+  if(localStorage.getItem("userInfo")){
     router.push("/shop/car");
-  }
+  } 
+ 
 };
 
 //点击收藏
 const clickCollect = () => {
   useIsLogin();
-  if (!localStorage.getItem("userInfo")) return;
+  if(!localStorage.getItem("userInfo")) return
   if (collect.value) {
     removeCollect();
   } else {
@@ -193,16 +191,16 @@ const clickCollect = () => {
 };
 
 //点击加入购物车
-const addCar = async () => {
+const addCar =async () => {
   useIsLogin();
-  if (!localStorage.getItem("userInfo")) return;
-  const { data: res } = await getIsAddCar(
+  if(!localStorage.getItem("userInfo")) return
+  const {data:res} =await getIsAddCar(
     localStorage.getItem("userId") as any,
     route.query.detailId as any
-  );
-  if (res.code === 403) return Toast("该商品已添加至购物车");
-  if (res.code === 404) return Toast("添加购物车失败");
-  Toast("已添加我的购物车");
+  )
+  if(res.code===403) return Toast("该商品已添加至购物车")
+  if(res.code===404) return Toast("添加购物车失败")
+  Toast("已添加我的购物车")
 };
 </script>
 
@@ -276,7 +274,7 @@ const addCar = async () => {
       background-color: #fff;
       border-radius: 0.3125rem;
       .ziying {
-        background-color: var(--themeColor);
+        background-color:  var(--themeColor);
         width: 5.3125rem;
         text-align: center;
         border-radius: 0.4688rem;
@@ -292,21 +290,6 @@ const addCar = async () => {
         -webkit-line-clamp: 2; /* 这里是超出几行省略 */
         overflow: hidden;
         margin: 0.4688rem 0;
-        .tag {
-          // background: var(--themeColor);
-          background: linear-gradient(
-            to right bottom,
-            rgb(158, 41, 41),
-            rgb(214, 60, 60),
-            rgb(120, 24, 24)
-          );
-          border-radius: 0.1875rem;
-          padding: 0 0.1875rem;
-          color: #fff;
-          font-size: 0.75rem;
-          // border-radius: .25rem;
-          margin-right: 0.25rem;
-        }
       }
       .select {
         width: 100%;
@@ -354,21 +337,6 @@ const addCar = async () => {
       overflow: hidden;
       margin: 0.4688rem 0;
       min-height: 3.125rem;
-      .tag {
-        // background: var(--themeColor);
-        background: linear-gradient(
-          to right bottom,
-          rgb(158, 41, 41),
-          rgb(214, 60, 60),
-          rgb(120, 24, 24)
-        );
-        border-radius: 0.1875rem;
-        padding: 0 0.1875rem;
-        color: #fff;
-        font-size: 0.75rem;
-        // border-radius: .25rem;
-        margin-right: 0.25rem;
-      }
     }
     .bottom {
       margin: 1.875rem;
@@ -417,11 +385,7 @@ const addCar = async () => {
           height: 75%;
           margin-right: 0.605rem;
           border-radius: 1.875rem;
-          background: linear-gradient(
-            to right,
-            rgb(183, 50, 50),
-            rgb(248, 86, 86)
-          );
+          background: linear-gradient(to right, rgb(183, 50, 50), rgb(248, 86, 86));
           display: flex;
           align-items: center;
           justify-content: center;

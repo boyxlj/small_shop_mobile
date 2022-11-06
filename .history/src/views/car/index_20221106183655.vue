@@ -253,6 +253,7 @@ const carOrder = async () => {
   });
   carOrderData.value = ret;
   isEmpty.value = false;
+  // console.log(toRaw(carOrderData.value))
 };
 </script>
 
@@ -303,18 +304,11 @@ const carOrder = async () => {
             text-overflow: ellipsis;
             white-space: nowrap;
             .tag {
-              // background: var(--themeColor);
-              background: linear-gradient(
-            to right bottom,
-            rgb(158, 41, 41),
-            rgb(214, 60, 60),
-            rgb(120, 24, 24)
-          ) ;
-          border-radius: .1875rem;
+              background: var(--themeColor);
               padding: 0 0.1875rem;
               color: #fff;
               font-size: 0.75rem;
-              // border-radius: 0.25rem;
+              border-radius: 0.25rem;
             }
           }
           .descs {

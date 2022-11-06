@@ -133,7 +133,7 @@ const navigateDetails = (detailId: number, refresh?: boolean) => {
         height: 2.3888rem;
         font-size: 0.875rem;
         .tag {
-          // background: var(--themeColor);
+          background: var(--themeColor);
           background: linear-gradient(
             to right bottom,
             rgb(158, 41, 41),
@@ -144,6 +144,7 @@ const navigateDetails = (detailId: number, refresh?: boolean) => {
           padding: 0 0.1875rem;
           color: #fff;
           font-size: 0.75rem;
+          // border-radius: 0.25rem;
         }
       }
       .price {

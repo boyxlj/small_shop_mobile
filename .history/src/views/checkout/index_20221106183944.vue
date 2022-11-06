@@ -5,6 +5,7 @@
         <div>确认订单</div>
       </template>
     </Navheader>
+    <!-- <page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}"> -->
     <div class="checkoutbox">
       <div class="content">
         <div class="address">
@@ -46,7 +47,7 @@
         </div>
         <div class="shop">
           <div class="top">
-            <van-tag type="danger" round size="large" color="#cf0a2c">微商城自营店</van-tag>
+            <van-tag type="danger" round size="large">微商城自营店</van-tag>
           </div>
           <div
             class="shopList"
@@ -56,7 +57,8 @@
           >
             <img :src="item.titleImg" />
             <div class="right">
-              <div class="title"><span v-if="item.tag" class="tag">{{item.tag}}</span>{{ item.title }}</div>
+              <div class="title">{{ item.title }}</div>
+              <!-- <div class="title">{{item.title}}/{{item.descs}}</div> -->
               <div class="price">
                 <span>￥{{ item.price }}</span
                 ><span>x{{ item.num }}</span>
@@ -118,20 +120,21 @@
             ><span
               style="
                 font-weight: bold;
-                color: #cf0a2c;
+                color: '#';
                 font-size: 1.4625rem;
-                margin-right: 0.625rem
+                margin-right: 0.625rem;
               "
               >￥{{ totalPrice }}</span
             >
           </div>
         </div>
         <div class="right">
-          <van-button @click="submitOrder" round type="danger" color="#cf0a2c">
+          <van-button @click="submitOrder" round type="danger">
             提交订单
           </van-button>
         </div>
       </div>
+      <!-- orderNumber----{{orderNumber}} -->
       <van-popup
         v-model:show="showPopup"
         position="bottom"
@@ -179,6 +182,9 @@
         </div>
       </van-popup>
     </div>
+    <!-- </page-meta> -->
+    <!-- <van-dialog id="van-dialog" /> -->
+
     <van-dialog
       use-slot
       title="请扫码支付"
@@ -230,6 +236,7 @@ const needDelete = ref(true);
 Toast.allowMultiple();
 const carList = route.query.list;
 let userId = localStorage.getItem("userId") as any;
+// console.log(carList,orderNumber)
 
 const checkoutOrderData = ref<ICarOrderData[]>([]);
 const defaultAddress = ref<IUserAddress[]>([]);
@@ -257,6 +264,7 @@ onMounted(() => {
 //查询订单详情
 const getOrderDetail = async () => {
   const { data: res } = await getSelectConfirmOrder(orderNumber.value);
+  // console.log(res)
   if (res.code != 200) return Toast.fail("订单异常！");
   checkoutOrderData.value = res.data;
   totalNum.value = res.totalNum;
@@ -266,6 +274,7 @@ const getOrderDetail = async () => {
 //获取用户收货地址
 const getAddress = async () => {
   const { data: res } = await getAllAddress(userId);
+  // console.log(res)
   if (res.code != 200) return Toast.fail("服务异常");
   if (res.default.length === 0) {
     defaultAddress.value = [];
@@ -286,9 +295,11 @@ const clickSetDefaultAddress = async (addressId: number) => {
 //删除订单
 const deleteOrder = async () => {
   const { data: res } = await getDeleteOrder(orderNumber.value);
+  // console.log("删除订单：",res)
 };
 //点击提交订单
 const submitOrder = async () => {
+  // console.log("点击提交订单")
   if (!defaultAddress.value.length) return Toast.fail("收货地址不能为空");
   const qr = route.query.list as any;
   const list: ICarOrderData[] = JSON.parse(qr);
@@ -472,21 +483,6 @@ onBeforeUnmount(() => {
               -webkit-line-clamp: 2;
               overflow: hidden;
               -webkit-box-orient: vertical;
-              .tag{
-            // background: var(--themeColor);
-            background: linear-gradient(
-            to right bottom,
-            rgb(158, 41, 41),
-            rgb(214, 60, 60),
-            rgb(120, 24, 24)
-          ) ;
-          border-radius: .1875rem;
-            padding: 0 .1875rem;
-            color: #fff;
-            font-size: .75rem;
-            // border-radius: .25rem;
-            margin-right: .25rem;
-        }
             }
             .price {
               display: flex;

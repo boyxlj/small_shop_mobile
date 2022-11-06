@@ -472,21 +472,6 @@ onBeforeUnmount(() => {
               -webkit-line-clamp: 2;
               overflow: hidden;
               -webkit-box-orient: vertical;
-              .tag{
-            // background: var(--themeColor);
-            background: linear-gradient(
-            to right bottom,
-            rgb(158, 41, 41),
-            rgb(214, 60, 60),
-            rgb(120, 24, 24)
-          ) ;
-          border-radius: .1875rem;
-            padding: 0 .1875rem;
-            color: #fff;
-            font-size: .75rem;
-            // border-radius: .25rem;
-            margin-right: .25rem;
-        }
             }
             .price {
               display: flex;
