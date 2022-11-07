@@ -8,7 +8,8 @@ const path = require("path")
 export default defineConfig({
   server:{
     host:true,
-    port:3303
+    port:3303,
+    
   },
   base:"./",
   plugins: [
@@ -27,5 +28,6 @@ export default defineConfig({
     alias:{
       "@":path.join(__dirname,"./src")
     }
-  }
+  },
+  
 })

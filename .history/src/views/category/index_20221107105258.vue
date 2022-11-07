@@ -110,8 +110,11 @@ const navigateDetail = (detailId:number)=>{
     position: fixed;
     left: 5.2rem;
     top: 2.5rem;
+    // margin-left: 22%;
     right: 0;
     background: #fff;
+    background: rgb(221, 87, 87);
+    // flex: 1;
     display: flex;
     flex-wrap: wrap;
     padding: 0 0.3375rem;

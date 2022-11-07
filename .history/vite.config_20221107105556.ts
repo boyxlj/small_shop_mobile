@@ -8,8 +8,10 @@ const path = require("path")
 export default defineConfig({
   server:{
     host:true,
-    port:3305
+    port:3303,
+    
   },
+  base:"./",
   plugins: [
     vue(),
     Components({
@@ -26,5 +28,6 @@ export default defineConfig({
     alias:{
       "@":path.join(__dirname,"./src")
     }
-  }
+  },
+  
 })

@@ -8,8 +8,15 @@ const path = require("path")
 export default defineConfig({
   server:{
     host:true,
-    port:3303
+    port:3303,
+    proxy:{
+      "/api":{
+        target:"https://www.11e.top",
+        rewrite: (path) => path.replace(/^\/api/, '/api')
+      }
+    }
   },
+  base:"./",
   plugins: [
     vue(),
     Components({
@@ -26,5 +33,6 @@ export default defineConfig({
     alias:{
       "@":path.join(__dirname,"./src")
     }
-  }
+  },
+  
 })

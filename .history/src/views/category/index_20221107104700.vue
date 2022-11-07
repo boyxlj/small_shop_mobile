@@ -93,11 +93,9 @@ const navigateDetail = (detailId:number)=>{
   width: 100%;
   height: 100vh;
   box-sizing: border-box;
-  display: flex;
   .sidebar {
     height: 100%;
-    // width: 5.2rem;
-    width: 22%;
+    width: 5.2rem;
     background: #f5f6f8;
     position: fixed;
     left: 0;
@@ -106,12 +104,12 @@ const navigateDetail = (detailId:number)=>{
   }
   .shop {
     height: 87vh;
-    width: 78%;
+    width: 100%;
     position: fixed;
     left: 5.2rem;
     top: 2.5rem;
-    right: 0;
     background: #fff;
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
     padding: 0 0.3375rem;

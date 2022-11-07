@@ -6,6 +6,17 @@ import { VantResolver } from 'unplugin-vue-components/resolvers';
 const path = require("path")
 
 export default defineConfig({
+  server:{
+    host:true,
+    port:3303,
+    proxy:{
+      "/api":{
+        target:"https://www.11e.top",
+        rewrite:()=>
+      }
+    }
+  },
+  base:"./",
   plugins: [
     vue(),
     Components({
@@ -22,5 +33,6 @@ export default defineConfig({
     alias:{
       "@":path.join(__dirname,"./src")
     }
-  }
+  },
+  
 })

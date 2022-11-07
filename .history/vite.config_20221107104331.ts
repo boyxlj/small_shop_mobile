@@ -6,19 +6,33 @@ import { VantResolver } from 'unplugin-vue-components/resolvers';
 const path = require("path")
 
 export default defineConfig({
+  server:{
+    host:true,
+    port:3303,
+    proxy:{
+      "/api":{
+        target:"https://www.11e.top",
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
+  base:"./",
   plugins: [
     vue(),
     Components({
       resolvers: [VantResolver()],
     }),
     AutoImport({ 
-      'vue',
-      'vue-router',
+      imports:[
+        'vue',
+        'vue-router',
+      ]
      }),
   ],
   resolve:{
     alias:{
       "@":path.join(__dirname,"./src")
     }
-  }
+  },
+  
 })
