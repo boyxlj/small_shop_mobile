@@ -24,7 +24,6 @@ const router = useRouter()
 Toast.allowMultiple();
 
 onActivated(()=>{
-
   emitter.emit("updateTitle", "商品分类");
 })
 onMounted(() => {
@@ -112,7 +111,6 @@ const navigateDetail = (detailId:number)=>{
     left: 5.4rem;
     top: 2.5rem;
     right: 0;
-    overflow-y:scroll !important;
     background: #fff;
     display: flex;
     flex-wrap: wrap;

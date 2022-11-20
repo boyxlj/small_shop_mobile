@@ -24,7 +24,6 @@ const router = useRouter()
 Toast.allowMultiple();
 
 onActivated(()=>{
-
   emitter.emit("updateTitle", "商品分类");
 })
 onMounted(() => {
@@ -95,6 +94,7 @@ const navigateDetail = (detailId:number)=>{
   height: 100vh;
   box-sizing: border-box;
   display: flex;
+  background: skyblue;
   .sidebar {
     height: 89%;
     // width: 5.2rem;
@@ -103,16 +103,15 @@ const navigateDetail = (detailId:number)=>{
     position: fixed;
     left: 0;
     top: 40px;
-    overflow-y:scroll !important;
+    overflow-y:scroll;
   }
   .shop {
-    height: 89vh;
+    height: 87vh;
     width: 78%;
     position: fixed;
-    left: 5.4rem;
+    left: 5.3rem;
     top: 2.5rem;
     right: 0;
-    overflow-y:scroll !important;
     background: #fff;
     display: flex;
     flex-wrap: wrap;
@@ -174,7 +173,7 @@ const navigateDetail = (detailId:number)=>{
     }
   }
   .empty{
-    margin-left:6rem;
+    margin-left: 4.5rem;
     position: fixed;
     left: 0;
     top: -3.78rem;

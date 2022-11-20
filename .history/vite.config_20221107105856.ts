@@ -9,6 +9,13 @@ export default defineConfig({
   server:{
     host:true,
     port:3303,
+    proxy:{
+      "/api":{
+        target:"https://www.11e.top",
+        changeOrigin:true,
+        rewrite: (path) => path.replace(/^\/api/, '/api')
+      }
+    }
   },
   base:"./",
   plugins: [

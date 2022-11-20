@@ -68,7 +68,10 @@ const props = withDefaults(defineProps<Props>(), {
 const navigateDetails = (detailId: number, refresh?: boolean) => {
   router.push(`/details?detailId=${detailId}`);
 };
-
+//跳转商品详情
+const navigateCategory = (detailId: number) => {
+  router.push(`/shop/category?detailId=${detailId}`);
+};
 </script>
 
 <style lang="less" scoped>

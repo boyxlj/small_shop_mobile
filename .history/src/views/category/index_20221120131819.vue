@@ -21,10 +21,15 @@ import { TCategoryReq } from "@/types/category";
 import {IIndexData} from "@/types/shop"
 import { getCategory, getCategoryShop } from "@/api/request";
 const router = useRouter()
+const route = useRoute()
 Toast.allowMultiple();
 
 onActivated(()=>{
-
+  if(route.query.detailId){
+    console.log(route.query.detailId)
+  }else{
+    console.log("不是从首页调转过来的")
+  }
   emitter.emit("updateTitle", "商品分类");
 })
 onMounted(() => {

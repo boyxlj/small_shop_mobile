@@ -24,7 +24,6 @@ const router = useRouter()
 Toast.allowMultiple();
 
 onActivated(()=>{
-
   emitter.emit("updateTitle", "商品分类");
 })
 onMounted(() => {

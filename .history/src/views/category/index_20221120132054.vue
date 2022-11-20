@@ -21,6 +21,7 @@ import { TCategoryReq } from "@/types/category";
 import {IIndexData} from "@/types/shop"
 import { getCategory, getCategoryShop } from "@/api/request";
 const router = useRouter()
+const route = useRoute()
 Toast.allowMultiple();
 
 onActivated(()=>{

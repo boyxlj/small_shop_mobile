@@ -2,8 +2,8 @@
   <div class="box">
     <template v-for="item in indexShopData" :key="item.detailId">
       <div v-if="item.children">
-        <div class="shop_category" >
-          <span >{{ item.categoryName }}专区</span>
+        <div class="shop_category">
+          <span>{{ item.categoryName }}专区</span>
         </div>
         <div class="shop">
           <div
@@ -68,7 +68,6 @@ const props = withDefaults(defineProps<Props>(), {
 const navigateDetails = (detailId: number, refresh?: boolean) => {
   router.push(`/details?detailId=${detailId}`);
 };
-
 </script>
 
 <style lang="less" scoped>
